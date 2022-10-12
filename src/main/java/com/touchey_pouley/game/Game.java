@@ -13,5 +13,6 @@ public class Game {
         PouleThierry.init();
         PouleThibault.init();
         Poulexis.init();
+        Poulexandre.init();
     }
 }

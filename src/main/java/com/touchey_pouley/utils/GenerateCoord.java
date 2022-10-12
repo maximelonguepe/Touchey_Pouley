@@ -18,6 +18,7 @@ public class GenerateCoord {
         return new Coordonnees(x, y);
     }
 
+    //TODO : gérer les bateaux sur la meme case
     public static List<Coordonnees> generateOtherCoords(Coordonnees coordonnees, int tailleX, int tailleY) {
         List<Coordonnees> coordonneesList = new ArrayList<>();
         int x = coordonnees.getX();
@@ -41,52 +42,47 @@ public class GenerateCoord {
         if (gauche == 0 && droite == 0) {
             Random r = new Random();
             int randomDroiteOuGauche = r.nextInt((1) + 1);
-            if(randomDroiteOuGauche==0){
-                gauche=1;
-            }
-            else{
-                droite=1;
+            if (randomDroiteOuGauche == 0) {
+                gauche = 1;
+            } else {
+                droite = 1;
             }
         }
 
         if (haut == 0 && bas == 0) {
             Random r = new Random();
             int randomHautBas = r.nextInt((1) + 1);
-            if(randomHautBas==0){
-                haut=1;
-            }
-            else{
-                bas=1;
+            if (randomHautBas == 0) {
+                haut = 1;
+            } else {
+                bas = 1;
             }
         }
 
         if (gauche == 1) {
 
-            for (int i = coordonnees.getX(); i > coordonnees.getX()-tailleX; i--) {
-                if (haut==1){
-                    for (int j=coordonnees.getY();j> coordonnees.getY()-tailleY;j--){
-                        coordonneesList.add(new Coordonnees(i,j));
+            for (int i = coordonnees.getX(); i > coordonnees.getX() - tailleX; i--) {
+                if (haut == 1) {
+                    for (int j = coordonnees.getY(); j > coordonnees.getY() - tailleY; j--) {
+                        coordonneesList.add(new Coordonnees(i, j));
                     }
-                }
-                else{
-                    for (int j=coordonnees.getY();j< coordonnees.getY()+tailleY;j++){
-                        coordonneesList.add(new Coordonnees(i,j));
+                } else {
+                    for (int j = coordonnees.getY(); j < coordonnees.getY() + tailleY; j++) {
+                        coordonneesList.add(new Coordonnees(i, j));
                     }
                 }
 
             }
 
-        }
-        else{
-            for (int i = coordonnees.getX(); i < coordonnees.getX()+tailleX; i++) {
-                if (haut==1){
-                    for (int j=coordonnees.getY();j> coordonnees.getY()-tailleY;j--){
-                        coordonneesList.add(new Coordonnees(i,j));
+        } else {
+            for (int i = coordonnees.getX(); i < coordonnees.getX() + tailleX; i++) {
+                if (haut == 1) {
+                    for (int j = coordonnees.getY(); j > coordonnees.getY() - tailleY; j--) {
+                        coordonneesList.add(new Coordonnees(i, j));
                     }
-                }
-                else{
-                    for (int j=coordonnees.getY();j< coordonnees.getY()+tailleY;j++){
-                        coordonneesList.add(new Coordonnees(i,j));
+                } else {
+                    for (int j = coordonnees.getY(); j < coordonnees.getY() + tailleY; j++) {
+                        coordonneesList.add(new Coordonnees(i, j));
                     }
                 }
 
