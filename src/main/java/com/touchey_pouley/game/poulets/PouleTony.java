@@ -3,30 +3,36 @@ package com.touchey_pouley.game.poulets;
 import com.touchey_pouley.game.Coordonnees;
 import com.touchey_pouley.utils.GenerateCoord;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+
 import java.util.List;
 
 
 @Getter
 @Setter
+@NoArgsConstructor
+
 public class PouleTony extends Poulet {
-    private static List<Coordonnees> coordonnees;
-    private static int tailleX;
-    private static int tailleY;
-
-    private static int hit;
-
-
-    public static void init() {
-        tailleX = 2;
-        tailleY=2;
-        hit = 0;
+    private static PouleTony pouleTony;
+    public void init() {
+        this.setTailleX(2);
+        this.setTailleY(2);
+        this.setHit(0);
         generateCoords();
     }
 
-    private static void generateCoords() {
+    private void generateCoords() {
         Coordonnees premiereCoordonnee=GenerateCoord.generateCoords();
-        coordonnees=GenerateCoord.generateOtherCoords(premiereCoordonnee,tailleX,tailleY);
+        this.setCoordonnees(GenerateCoord.generateOtherCoords(premiereCoordonnee,this.getTailleX(),this.getTailleY()));
+    }
+    public static PouleTony getInstance() {
+        if (pouleTony==null){
+            pouleTony=new PouleTony();
+        }
+        return pouleTony;
     }
 }
 

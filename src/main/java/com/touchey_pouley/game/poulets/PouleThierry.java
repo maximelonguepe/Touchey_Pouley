@@ -2,27 +2,32 @@ package com.touchey_pouley.game.poulets;
 
 import com.touchey_pouley.game.Coordonnees;
 import com.touchey_pouley.utils.GenerateCoord;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@NoArgsConstructor
 public class PouleThierry extends Poulet {
-    private static List<Coordonnees> coordonnees;
-    private static int tailleX;
-    private static int tailleY;
-
-    private static int hit;
+    private static PouleThierry instance;
 
 
-    public static void init() {
-        tailleX = 4;
-        tailleY = 4;
-        hit = 0;
+    public void init() {
+        this.setTailleX(4);
+        this.setTailleY(4);
+        this.setHit(0);
         generateCoords();
     }
 
-    private static void generateCoords() {
+    private void generateCoords() {
         Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
-        coordonnees = GenerateCoord.generateOtherCoords(premiereCoordonnee, tailleX, tailleY);
+        this.setCoordonnees(GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleX(), getTailleY()));
+    }
+
+    public static PouleThierry getInstance() {
+        if(instance==null){
+            instance=new PouleThierry();
+        }
+        return instance;
     }
 }
 

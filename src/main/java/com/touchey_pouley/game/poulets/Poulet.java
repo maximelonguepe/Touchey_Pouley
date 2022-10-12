@@ -9,6 +9,14 @@ import java.util.List;
 @Getter
 @Setter
 public class Poulet {
+    private List<Coordonnees> coordonnees;
+    private int tailleX;
+    private int tailleY;
 
+    private int hit;
+
+    public void init() {
+
+    }
 
 }

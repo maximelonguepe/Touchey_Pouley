@@ -3,32 +3,37 @@ package com.touchey_pouley.game.poulets;
 import com.touchey_pouley.game.Coordonnees;
 import com.touchey_pouley.utils.GenerateCoord;
 import com.touchey_pouley.utils.RandomGenerator;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
 public class Poulexis extends Poulet {
 
-    private static List<Coordonnees> coordonnees;
-    private static int tailleX;
-    private static int tailleY;
+    private static Poulexis instance;
 
-    private static int hit;
-
-    public static void init() {
-        tailleX = 1;
-        tailleY = 4;
-        hit = 0;
+    public void init() {
+        this.setTailleX(1);
+        this.setTailleY(4);
+        this.setHit(0);
         generateCoords();
     }
 
-    private static void generateCoords() {
+    private void generateCoords() {
 
         Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
         int rand = RandomGenerator.randomWithZero(1);
         if (rand == 0) {
-            coordonnees = GenerateCoord.generateOtherCoords(premiereCoordonnee, tailleX, tailleY);
+            this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleX(), getTailleY()));
         } else {
-            coordonnees = GenerateCoord.generateOtherCoords(premiereCoordonnee, tailleY, tailleX);
+            this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleY(), getTailleX()));
+
         }
+    }
+
+    public static Poulexis getInstance() {
+        if(instance==null){
+            instance=new Poulexis();
+        }
+        return instance;
     }
 }

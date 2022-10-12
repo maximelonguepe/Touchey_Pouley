@@ -3,34 +3,38 @@ package com.touchey_pouley.game.poulets;
 import com.touchey_pouley.game.Coordonnees;
 import com.touchey_pouley.utils.GenerateCoord;
 import com.touchey_pouley.utils.RandomGenerator;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@NoArgsConstructor
 public class Poulexandre extends Poulet {
-    private static List<Coordonnees> coordonnees;
-    private static int tailleX;
-    private static int tailleY;
+    private static Poulexandre instance;
 
-    private static int hit;
+    public void init() {
 
-    public static void init() {
-        tailleX = 1;
-        tailleY = 3;
-        hit = 0;
+        this.setTailleX(1);
+        this.setTailleY(3);
+        this.setHit(0);
         generateCoords();
     }
 
-    private static void generateCoords() {
+    private void generateCoords() {
 
         Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
         int rand = RandomGenerator.randomWithZero(1);
         //permet de mettre le poulet verticalement ou horizontalement
         if (rand == 0) {
-            coordonnees = GenerateCoord.generateOtherCoords(premiereCoordonnee, tailleX, tailleY);
+           this.setCoordonnees(GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleX(), getTailleY()));
+
         } else {
-            coordonnees = GenerateCoord.generateOtherCoords(premiereCoordonnee, tailleY, tailleX);
+            this.setCoordonnees(GenerateCoord.generateOtherCoords(premiereCoordonnee, this.getTailleY(), this.getTailleX()));
         }
     }
 
-
+    public static Poulexandre getInstance() {
+        if(instance==null){
+            instance=new Poulexandre();
+        }
+        return instance;
+    }
 }
