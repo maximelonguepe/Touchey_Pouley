@@ -1,6 +1,7 @@
 package com.touchey_pouley.game.poulets;
 
 import com.touchey_pouley.game.Coordonnees;
+import com.touchey_pouley.game.Game;
 import com.touchey_pouley.utils.GenerateCoord;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class PouleThibault extends Poulet {
     private void generateCoords() {
         Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
         this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, this.getTailleX(), this.getTailleY()));
+        Game.getInstance().addPouletPositions(this.getCoordonnees());
     }
 
     public PouleThibault() {

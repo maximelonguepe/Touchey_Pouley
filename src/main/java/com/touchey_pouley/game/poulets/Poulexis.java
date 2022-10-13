@@ -1,6 +1,7 @@
 package com.touchey_pouley.game.poulets;
 
 import com.touchey_pouley.game.Coordonnees;
+import com.touchey_pouley.game.Game;
 import com.touchey_pouley.utils.GenerateCoord;
 import com.touchey_pouley.utils.RandomGenerator;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,9 @@ public class Poulexis extends Poulet {
             this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleX(), getTailleY()));
         } else {
             this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleY(), getTailleX()));
-
         }
+        Game.getInstance().addPouletPositions(this.getCoordonnees());
+
     }
 
     public static Poulexis getInstance() {

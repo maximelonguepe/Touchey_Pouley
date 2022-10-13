@@ -9,10 +9,12 @@ import java.util.List;
 @NoArgsConstructor
 public class Game {
     private static Game instance;
-    private static List<Coordonnees> playedCoordinates;
-    private static List<Poulet> pouletList;
+    private  List<Coordonnees> playedCoordinates;
+    private List<Coordonnees> pouletPositions;
+    private List<Poulet> pouletList;
 
-    public static void startGame(){
+    public void startGame(){
+        pouletPositions =new ArrayList<>();
         pouletList=new ArrayList<>();
         pouletList.add(PouleTony.getInstance());
         pouletList.add(PouleThierry.getInstance());
@@ -20,10 +22,14 @@ public class Game {
         pouletList.add(Poulexis.getInstance());
         pouletList.add(Poulexandre.getInstance());
         pouletList.forEach(Poulet::init);
+
         System.out.println(pouletList);
 
     }
 
+    public void addPouletPositions(List<Coordonnees> coordonnees ){
+        this.pouletPositions.addAll(coordonnees);
+    }
     public static Game getInstance() {
         if(instance==null){
             instance=new Game();

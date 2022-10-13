@@ -11,6 +11,6 @@ public class StartController {
 
     @GetMapping()
     public void startGame(){
-        Game.startGame();
+        Game.getInstance().startGame();
     }
 }
