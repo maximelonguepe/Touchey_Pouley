@@ -14,9 +14,12 @@ public class Poulet {
     private int tailleY;
 
     private int hit;
-
+    private String name;
     public void init() {
 
+    }
+    public void initName(){
+        this.name=this.getClass().getSimpleName();
     }
 
 }

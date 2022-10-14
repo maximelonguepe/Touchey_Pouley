@@ -3,6 +3,7 @@ package com.touchey_pouley.game.poulets;
 import com.touchey_pouley.game.Coordonnees;
 import com.touchey_pouley.game.Game;
 import com.touchey_pouley.utils.GenerateCoord;
+import com.touchey_pouley.utils.Init;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,10 +20,8 @@ import java.util.List;
 public class PouleTony extends Poulet {
     private static PouleTony pouleTony;
     public void init() {
-        this.setTailleX(2);
-        this.setTailleY(2);
-        this.setHit(0);
-        generateCoords();
+        Init.init(this,2,2);
+
     }
 
     private void generateCoords() {
