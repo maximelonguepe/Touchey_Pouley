@@ -24,12 +24,6 @@ public class PouleTony extends Poulet {
 
     }
 
-    private void generateCoords() {
-        Coordonnees premiereCoordonnee=GenerateCoord.generateCoords();
-        this.setCoordonnees(GenerateCoord.generateOtherCoords(premiereCoordonnee,this.getTailleX(),this.getTailleY()));
-        Game.getInstance().addPouletPositions(this.getCoordonnees());
-
-    }
     public static PouleTony getInstance() {
         if (pouleTony==null){
             pouleTony=new PouleTony();

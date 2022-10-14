@@ -14,11 +14,6 @@ public class PouleThibault extends Poulet {
         Init.init(this,5,5);
     }
 
-    private void generateCoords() {
-        Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
-        this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, this.getTailleX(), this.getTailleY()));
-        Game.getInstance().addPouletPositions(this.getCoordonnees());
-    }
 
     public PouleThibault() {
     }

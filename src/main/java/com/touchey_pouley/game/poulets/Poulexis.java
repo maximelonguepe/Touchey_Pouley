@@ -18,19 +18,6 @@ public class Poulexis extends Poulet {
 
     }
 
-    private void generateCoords() {
-
-        Coordonnees premiereCoordonnee = GenerateCoord.generateCoords();
-        int rand = RandomGenerator.randomWithZero(1);
-        if (rand == 0) {
-            this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleX(), getTailleY()));
-        } else {
-            this.setCoordonnees( GenerateCoord.generateOtherCoords(premiereCoordonnee, getTailleY(), getTailleX()));
-        }
-        Game.getInstance().addPouletPositions(this.getCoordonnees());
-
-    }
-
     public static Poulexis getInstance() {
         if(instance==null){
             instance=new Poulexis();
